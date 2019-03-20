@@ -6,7 +6,7 @@
 #include "picoapi.h"
 
 const int MEM_SIZE = 1024 * 1024 * 5;
-const int BUF_SIZE = 160000;
+const int BUF_SIZE = 16000;
 
 // Error handling.
 

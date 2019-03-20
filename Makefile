@@ -1,5 +1,5 @@
 CC = gcc # C compiler
-CFLAGS = -fPIC -Wall -Wextra -O2 -g -include stdint.h # C flags
+CFLAGS = -fPIC -Wall -Wextra -Wno-unused -Wno-implicit-fallthrough -O2 -g -include stdint.h # C flags
 #CFLAGS += -D_WIN32
 LDFLAGS = -shared  # linking flags
 TARGET_LIB = libsvoxpico.so # target lib
