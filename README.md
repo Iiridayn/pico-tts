@@ -9,3 +9,5 @@ To use the binary, simply pass text in over stdin and receive uncompressed PCM o
 ## TODO
 
 * Output file flag w/`-` for stdout, so I don't throw garbage at the terminal without a warning
+    * Might also guess if stdout is a TTY and whine - heuristics aren't perfect, but possibly adequate
+* Possibly: include header files in `/usr/include`, _maybe_ rename library to `libttspico.so` (for drop-in upgrades), and mark a conflict w/`svox-pico-bin` for an upgrade path
