@@ -1,3 +1,5 @@
 [submodule "svox"]
 	path = svox
 	url = https://android.googlesource.com/platform/external/svox
+	shallow = true
+	branch = master
