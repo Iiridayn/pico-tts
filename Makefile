@@ -21,7 +21,12 @@ dev: pico-tts.c
 	$(CC) -g -Wall -Wextra -O2 -g -I $(LIB_DIR) -lm -L. -l svoxpico -Wl,-rpath=. -o $@ $^
 
 pico-tts: pico-tts.c
-	$(CC) -g -Wall -Wextra -O2 -g -I $(LIB_DIR) -lm -L. -l svoxpico -o $@ $^
+	$(CC) -g -Wall -Wextra -O2 -g -I $(LIB_DIR) -lm -L. -l svoxpico -DNDEBUG -o $@ $^
+
+install: pico-tts
+	install -s ${TARGET_LIB} $(DESTDIR)/usr/lib/
+	install -s pico-tts $(DESTDIR)/usr/bin/
+	install -D -m 0644 -t $(DESTDIR)/usr/share/pico-tts svox/pico/lang/*
 
 clean:
-	rm ${TARGET_LIB} ${OBJS} $(SRCS:.c=.d) pico-tts
+	rm ${TARGET_LIB} ${OBJS} $(SRCS:.c=.d) dev pico-tts

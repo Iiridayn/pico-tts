@@ -7,7 +7,3 @@ To use the binary (other than the LD_LIBRARY_PATH stuff), simply pass text in ov
 ## TODO
 
 * Output file flag w/`-` for stdout, so I don't throw garbage at the terminal without a warning
-* Same for the language files - need to be able to find those from the binary as well
-	* Probably just have a search path (dev, /usr/local | /usr install paths), and quit if can't find them
-* Strip lib and binary for release builds
-* make install

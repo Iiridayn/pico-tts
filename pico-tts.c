@@ -5,6 +5,12 @@
 
 #include "picoapi.h"
 
+#ifndef NDEBUG
+#define LANG_BASE_DIR "./svox/pico/lang/"
+#else
+#define LANG_BASE_DIR "/usr/share/pico-tts/"
+#endif
+
 const int MEM_SIZE = 1024 * 1024 * 5;
 const int BUF_SIZE = 16000;
 
@@ -116,7 +122,7 @@ typedef struct {
     const pico_Char * ta_file;
     const pico_Char * sg_file;
 } voice_t;
-#define ADD_LANG(NAME, SG) { (pico_Char *) NAME, (pico_Char *) NAME"_ta.bin", (pico_Char *) NAME"_"SG"0_sg.bin" }
+#define ADD_LANG(NAME, SG) { (pico_Char *) NAME, (pico_Char *) LANG_BASE_DIR NAME"_ta.bin", (pico_Char *) LANG_BASE_DIR NAME"_"SG"0_sg.bin" }
 static const voice_t voices[] = {
     ADD_LANG("de-DE", "gl"), ADD_LANG("en-GB", "kh"), ADD_LANG("en-US", "lh"),
     ADD_LANG("es-ES", "zl"), ADD_LANG("fr-FR", "nk"), ADD_LANG("it-IT", "cm"),
@@ -161,9 +167,6 @@ int main(int argc, char **argv)
                 fprintf(stderr, "Getopt returned character code 0%o ??\n", currentOption);
         }
     }
-
-    // TODO: no good - these and the .so need to be distributed somewhere common
-    chdir("svox/pico/lang");
 
     const voice_t * selected = NULL;
     for (int i = 0; i < voice_count; i++) {
