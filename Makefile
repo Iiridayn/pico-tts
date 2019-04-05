@@ -17,10 +17,10 @@ include $(SRCS:.c=.d)
 $(TARGET_LIB): $(OBJS)
 	$(CC) ${LDFLAGS} -o $@ $^
 
-dev: pico-tts.c
+dev: pico-tts.c $(TARGET_LIB)
 	$(CC) -g -Wall -Wextra -O2 -g -I $(LIB_DIR) -lm -L. -l svoxpico -Wl,-rpath=. -o $@ $^
 
-pico-tts: pico-tts.c
+pico-tts: pico-tts.c $(TARGET_LIB)
 	$(CC) -g -Wall -Wextra -O2 -g -I $(LIB_DIR) -lm -L. -l svoxpico -DNDEBUG -o $@ $^
 
 install: pico-tts
