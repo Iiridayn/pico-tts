@@ -24,8 +24,8 @@ pico-tts: pico-tts.c $(TARGET_LIB)
 	$(CC) -g -Wall -Wextra -O2 -g -I $(LIB_DIR) -lm -L. -l svoxpico -DNDEBUG -o $@ $^
 
 install: pico-tts
-	install -s ${TARGET_LIB} $(DESTDIR)/usr/lib/
-	install -s pico-tts $(DESTDIR)/usr/bin/
+	install -D -s -t $(DESTDIR)/usr/lib/ ${TARGET_LIB}
+	install -D -s -t $(DESTDIR)/usr/bin/ pico-tts
 	install -D -m 0644 -t $(DESTDIR)/usr/share/pico-tts svox/pico/lang/*
 
 clean:
