@@ -18,7 +18,7 @@ $(TARGET_LIB): $(OBJS)
 	$(CC) ${LDFLAGS} -o $@ $^
 
 pico-tts: pico-tts.c
-	$(CC) -g -Wall -Wextra -O2 -g -I $(LIB_DIR) -lm -L. -l svoxpico -o $@ $^
+	$(CC) -g -Wall -Wextra -O2 -g -I $(LIB_DIR) -lm -L. -l svoxpico -Wl,-rpath=. -o $@ $^
 
 clean:
 	rm ${TARGET_LIB} ${OBJS} $(SRCS:.c=.d) pico-tts
