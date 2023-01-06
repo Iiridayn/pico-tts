@@ -18,10 +18,10 @@ $(TARGET_LIB): $(OBJS)
 	$(CC) ${LDFLAGS} -o $@ $^
 
 dev: pico-tts.c $(TARGET_LIB)
-	$(CC) -g -Wall -Wextra -O2 -g -I $(LIB_DIR) -L. -l svoxpico -Wl,-rpath=. -o $@ $^ -lm
+	$(CC) -g -Wall -Wextra -O2 -g -Wl,-rpath=. -o $@ $^ -I $(LIB_DIR) -L. -l svoxpico -lm
 
 pico-tts: pico-tts.c $(TARGET_LIB)
-	$(CC) -g -Wall -Wextra -O2 -g -I $(LIB_DIR) -L. -l svoxpico -DNDEBUG -o $@ $^ -lm
+	$(CC) -g -Wall -Wextra -O2 -g -DNDEBUG -o $@ $^ -I $(LIB_DIR) -L. -l svoxpico -lm
 
 install: pico-tts
 	install -D -s -t $(DESTDIR)/usr/lib/ ${TARGET_LIB}
