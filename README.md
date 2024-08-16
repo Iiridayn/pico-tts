@@ -1,4 +1,4 @@
-Based on https://github.com/gmorenz/pico-tts, [upstream changes are CC0](https://github.com/gmorenz/pico-tts/issues/1). The Makefile is based on https://github.com/DougGore/picopi with an implicit license, and is probably original enough now anyway.
+Based on https://github.com/gmorenz/pico-tts, [upstream changes are CC0](https://github.com/gmorenz/pico-tts/issues/1). The Makefile started from https://github.com/DougGore/picopi/blob/master/pico/lib/Makefile though I've made extensive changes.
 
 This repository uses submodules - to checkout completely, `git submodule init`, `git submodule update`. So, should upstream delete their repo we're out of luck - but this is otherwise a fairly simple and clean method of tracking dependencies.
 
