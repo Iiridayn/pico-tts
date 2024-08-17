@@ -17,13 +17,13 @@ $(OBJS): %.o: %.c
 	$(CC) $(CPPFLAGS) $(CFLAGS) $(SVOXFLAGS) -c -o $@ $^
 
 $(TARGET_LIB): $(OBJS)
-	$(CC) ${LDFLAGS} -shared -o $@ $^
+	$(CC) ${LDFLAGS} -shared -o $@ $^ -lm
 
 dev: pico-tts.c $(TARGET_LIB)
 	$(CC) $(CPPFLAGS) $(CFLAGS) -g -Wl,-rpath=. -o $@ $^ -I $(LIB_DIR) -L. -l svoxpico -lm
 
 pico-tts: pico-tts.c $(TARGET_LIB)
-	$(CC) $(CPPFLAGS) $(CFLAGS) -DNDEBUG -o $@ $^ -I $(LIB_DIR) -L. -l svoxpico -lm
+	$(CC) $(CPPFLAGS) $(CFLAGS) -DNDEBUG -o $@ $^ $(LDFLAGS) -I $(LIB_DIR) -L. -l svoxpico -lm
 
 install: pico-tts
 	install -D -s -t $(DESTDIR)/usr/lib/ ${TARGET_LIB}
